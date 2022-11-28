@@ -9,8 +9,8 @@ print("="*80)
 
 for i in range(jumlah_kebun): # menentukan banyaknya atau batasan tanaman yang bisa ditanam di setiap lahan
     i+=1
-    luas_setiap_kebun = int(input(f"\nmasukkan luas lahan ke {i} anda (m^2)= "))
     nama_jenis = input("masukkan nama tanaman yang anda tanam = ")
+    luas_setiap_kebun = int(input(f"\nmasukkan luas lahan ke {i} anda (m^2)= "))
     jarak_1 = float(input("masukkan jarak lebar antar tanaman (cm)= "))
     jarak_2 = float(input("masukkan jarak panjang antar tanaman (cm)= "))
     jarak_1 = jarak_1/100
