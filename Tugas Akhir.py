@@ -42,16 +42,16 @@ for i in range(jumlah_kebun): # menentukan banyaknya atau batasan tanaman yang b
             lahan_yang_tersisa = jumlah_tanaman_yang_bisa_ditanam  - sum(jumlah_bibit_tanaman)
             jumlah_bibit_tanaman.append(lahan_yang_tersisa)
             list_keterangan_kebun.append(i)
-            nama_jenis.append(nama_tanaman)
+            nama_tanaman.append(nama_jenis)
             lahan_yang_tersisa = 0
             if seed_left > 0 :
                 print(f"jumlah bibit {nama_jenis} {jenis} terlalu banyak sehingga lebih {seed_left} bibit\n")
             break
         list_keterangan_kebun.append(i)
-        nama_tanaman.append(nama_jenis)
         jenis_tanaman.append(jenis)
         lahan_yang_tersisa = jumlah_tanaman_yang_bisa_ditanam  - sum(jumlah_bibit_tanaman)
         print(f"lahan yang tersisa {lahan_yang_tersisa}\n")
+        nama_tanaman.append(nama_jenis)
        
         
     print("=======================================================================================")
