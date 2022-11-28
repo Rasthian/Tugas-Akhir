@@ -6,12 +6,11 @@ print("="*80)
 print("SELAMAT DATANG DI BITCOUNT")
 print("Aplikasi yang dapat memudahkan anda untuk memaksimalkan\nlahan yang anda punya sebagai lahan pertanian")
 jumlah_kebun = int(input("\nMasukkan Jumlah lahan yang anda Miliki = \n"))
-
 print("="*80)
 
 for i in range(jumlah_kebun): # menentukan banyaknya atau batasan tanaman yang bisa ditanam di setiap lahan
     i+=1
-    nama_jenis = str(input("masukkan nama tanaman yang anda tanam = "))
+    nama_jenis = str(input("\nmasukkan nama tanaman yang anda tanam = "))
     luas_setiap_kebun = int(input(f"\nmasukkan luas lahan ke {i} anda (m^2)= "))
     jarak_1 = float(input("masukkan jarak lebar antar tanaman (cm)= "))
     jarak_2 = float(input("masukkan jarak panjang antar tanaman (cm)= "))
@@ -46,6 +45,16 @@ for i in range(jumlah_kebun): # menentukan banyaknya atau batasan tanaman yang b
             lahan_yang_tersisa = 0
             if seed_left > 0 :
                 print(f"jumlah bibit {nama_jenis} {jenis} terlalu banyak sehingga lebih {seed_left} bibit\n")
+            # Meratakan Bibit
+            option_meratakan = input("apakah anda ingin meratakan semua bibit (y/n) ?: ")
+            if option_meratakan == "y":
+                total = sum(jumlah_bibit_tanaman)/u
+                total = int(total)
+                jumlah_bibit_tanaman.clear()
+                for y in range (u):
+                    jumlah_bibit_tanaman.append(total)
+            else:
+                print()
             break
         list_keterangan_kebun.append(i)
         jenis_tanaman.append(jenis)
@@ -53,7 +62,7 @@ for i in range(jumlah_kebun): # menentukan banyaknya atau batasan tanaman yang b
         print(f"lahan yang tersisa {lahan_yang_tersisa}\n")
         nama_tanaman.append(nama_jenis)
        
-        
+    
     print("=======================================================================================")
     for idx , o in enumerate(jumlah_bibit_tanaman): # memberikan informasi yang akan ditanam dari setiap jenis dan jumlah
         idx1 = idx+1
@@ -75,16 +84,20 @@ for i in range(jumlah_kebun): # menentukan banyaknya atau batasan tanaman yang b
     
     keterangan = str(input("apakah anda ingin menyimpan data di atas ? y/n = ")) # menambahkan jumlah data ke dalam csv
     if keterangan == "y":
-        data1.to_csv('tugas akhir.csv', mode='a', index=False)
+        data1.to_csv('tugas akhir.csv', mode='a', index=False,header=False)
     elif keterangan == "n":
         break
     
 print("")
 print("="*80)   
 keterangan_awal = str(input("apakah anda ingin melihat isi database ? y/n = \n")) # melihat data yang ada di csv
-
 if keterangan_awal == "y":
     keterangan_awal = pd.read_csv('tugas akhir.csv')
     print(keterangan_awal)
+    keterangan_lanjut= str(input("\napakah anda ingin menghapus semuanya y/n = "))
+    if keterangan_lanjut == "y":
+        f = open("tugas akhir.csv", "w")
+        f.truncate()
+        f.close()
 else:
     print()
